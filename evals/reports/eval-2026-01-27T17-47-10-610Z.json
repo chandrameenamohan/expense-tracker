@@ -1,0 +1,1166 @@
+{
+  "timestamp": "2026-01-27T17:47:10.610Z",
+  "summaries": [
+    {
+      "component": "parser",
+      "total": 15,
+      "passed": 4,
+      "failed": 11,
+      "passRate": 0.26666666666666666,
+      "avgScore": 0.8466666666666668,
+      "results": [
+        {
+          "id": "upi-debit-gpay-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "SWIGGY",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-credit-01",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "RAHUL SHARMA",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-phonepe-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "BIGBASKET",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "cc-debit-hdfc-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "cc-debit-icici-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "neft-credit-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "ACME CORP PVT LTD",
+              "actual": "Salary",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "neft-debit-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "JOHN DOE",
+              "actual": "NEFT transfer to JOHN DOE",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "sip-hdfc-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "HDFC Mid Cap Opportunities Fund",
+              "actual": "HDFC Mid Cap Opportunities Fund - Growth",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "sip-icici-01",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "Axis Bluechip Fund",
+              "actual": "Ax",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "loan-emi-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "Home Loan EMI",
+              "actual": "Home Loan",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "loan-car-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "Car Loan EMI",
+              "actual": "Car Loan",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-small-amount-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "PHONEPE MERCHANT",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-large-amount-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "LANDLORD REALTY",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "cc-intl-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "imps-credit-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        }
+      ]
+    },
+    {
+      "component": "categorization",
+      "total": 50,
+      "passed": 0,
+      "failed": 50,
+      "passRate": 0,
+      "avgScore": 0,
+      "results": [
+        {
+          "id": "cat-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-02",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-03",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-04",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-05",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-06",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transport",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-07",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transport",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-08",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transport",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-09",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transport",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-10",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transport",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-11",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-12",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-13",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-14",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-15",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-16",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-17",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-18",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-19",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-20",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-21",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-22",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-23",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Health",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-24",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Health",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-25",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Health",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-26",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Health",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-27",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Education",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-28",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Education",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-29",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Education",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-30",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Investment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-31",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Investment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-32",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Investment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-33",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Investment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-34",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transfer",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-35",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transfer",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-36",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Transfer",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-37",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-38",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Food",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-39",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-40",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-41",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-42",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-43",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-44",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-45",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Health",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-46",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Education",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-47",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-48",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Entertainment",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-49",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Shopping",
+            "actual": "Other"
+          }
+        },
+        {
+          "id": "cat-50",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "expected": "Bills",
+            "actual": "Other"
+          }
+        }
+      ]
+    },
+    {
+      "component": "nl-query",
+      "total": 15,
+      "passed": 1,
+      "failed": 14,
+      "passRate": 0.06666666666666667,
+      "avgScore": 0.06666666666666667,
+      "results": [
+        {
+          "id": "nlq-01_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_SUM": true,
+            "missingPattern_amount": true,
+            "missingPattern_debit": true
+          }
+        },
+        {
+          "id": "nlq-01_results",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "matchedRows": 0,
+            "totalExpected": 1
+          }
+        },
+        {
+          "id": "nlq-02_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_GROUP BY": true,
+            "missingPattern_category": true
+          }
+        },
+        {
+          "id": "nlq-03_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_merchant": true,
+            "missingPattern_SUM": true,
+            "missingPattern_ORDER BY": true
+          }
+        },
+        {
+          "id": "nlq-04_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_credit_card": true,
+            "missingPattern_SUM": true
+          }
+        },
+        {
+          "id": "nlq-04_results",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "matchedRows": 0,
+            "totalExpected": 1
+          }
+        },
+        {
+          "id": "nlq-05_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_Food": true,
+            "missingPattern_SUM": true
+          }
+        },
+        {
+          "id": "nlq-05_results",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "matchedRows": 0,
+            "totalExpected": 1
+          }
+        },
+        {
+          "id": "nlq-06_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_COUNT": true
+          }
+        },
+        {
+          "id": "nlq-06_results",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "matchedRows": 0,
+            "totalExpected": 1
+          }
+        },
+        {
+          "id": "nlq-07_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_ORDER BY": true,
+            "missingPattern_amount": true,
+            "missingPattern_DESC": true
+          }
+        },
+        {
+          "id": "nlq-08_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_upi": true
+          }
+        },
+        {
+          "id": "nlq-09_sql",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "missingPattern_credit": true,
+            "missingPattern_SUM": true
+          }
+        },
+        {
+          "id": "nlq-09_results",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "matchedRows": 0,
+            "totalExpected": 1
+          }
+        },
+        {
+          "id": "nlq-10_sql",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        }
+      ]
+    },
+    {
+      "component": "chat",
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "passRate": 1,
+      "avgScore": 0.5,
+      "results": [
+        {
+          "id": "chat-01",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-02",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-03",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-04",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-05",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-06",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-07",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-08",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-09",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-10",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-11",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-12",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-13",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-14",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-15",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-16",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-17",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-18",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-19",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        },
+        {
+          "id": "chat-20",
+          "pass": true,
+          "score": 0.5,
+          "details": {
+            "outputLength": 39
+          }
+        }
+      ]
+    },
+    {
+      "component": "alerts",
+      "total": 14,
+      "passed": 4,
+      "failed": 10,
+      "passRate": 0.2857142857142857,
+      "avgScore": 0.2857142857142857,
+      "results": [
+        {
+          "id": "alert-spike-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-large-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-new-cat-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-no-alert-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-multiple-large-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-credit-no-alert-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-empty-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-spike-transport-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-boundary-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-below-threshold-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-multiple-spikes-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-spike-exact-threshold-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-spike-just-above-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-large-multiple-categories-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "component": "e2e",
+      "total": 6,
+      "passed": 1,
+      "failed": 5,
+      "passRate": 0.16666666666666666,
+      "avgScore": 0.7916666666666666,
+      "results": [
+        {
+          "id": "e2e-basic-01_tx_0",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "ZOMATO",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "e2e-cc-01_tx_0",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "e2e-multiple-01_tx_0",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "CHAI POINT",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "e2e-multiple-01_tx_1",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "Personal Loan EMI",
+              "actual": "Personal Loan",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "e2e-neft-salary-01_tx_0",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "TECHCORP SOLUTIONS",
+              "actual": "Salary",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "e2e-sip-01_tx_0",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "Parag Parikh Flexi Cap Fund",
+              "actual": "Parag Parikh Flexi Cap Fund Direct Growth",
+              "match": false
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "overallPassRate": 0.25,
+  "overallAvgScore": 0.2704166666666667
+}

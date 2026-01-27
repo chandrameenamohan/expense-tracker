@@ -24,6 +24,7 @@ export {
   getTransaction,
   getTransactionsByEmail,
   listTransactions,
+  updateTransactionMerchant,
   updateTransactionCategory,
   updateTransactionReview,
   deleteTransaction,
@@ -44,3 +45,10 @@ export {
   getCorrectionsByMerchant,
   getRecentCorrections,
 } from "./category-corrections";
+export {
+  insertEvalFlag,
+  getEvalFlag,
+  getEvalFlagsByTransaction,
+  getAllEvalFlags,
+} from "./eval-flags";
+export type { EvalFlag } from "./eval-flags";

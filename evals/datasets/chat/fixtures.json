@@ -1,0 +1,214 @@
+[
+  {
+    "id": "chat-01",
+    "description": "Basic spending question",
+    "seedData": [
+      { "id": "chat-tx-01", "emailMessageId": "chat-e-01", "date": "2025-01-10T10:00:00.000Z", "amount": 500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-02", "emailMessageId": "chat-e-02", "date": "2025-01-11T10:00:00.000Z", "amount": 300, "direction": "debit", "type": "upi", "merchant": "ZOMATO", "category": "Food" }
+    ],
+    "question": "How much did I spend on food?",
+    "expectedTraits": ["Should mention food spending total", "Should reference specific merchants"]
+  },
+  {
+    "id": "chat-02",
+    "description": "Monthly summary question",
+    "seedData": [
+      { "id": "chat-tx-03", "emailMessageId": "chat-e-03", "date": "2025-01-10T10:00:00.000Z", "amount": 500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-04", "emailMessageId": "chat-e-04", "date": "2025-01-11T10:00:00.000Z", "amount": 285, "direction": "debit", "type": "upi", "merchant": "UBER", "category": "Transport" },
+      { "id": "chat-tx-05", "emailMessageId": "chat-e-05", "date": "2025-01-12T10:00:00.000Z", "amount": 2499, "direction": "debit", "type": "credit_card", "merchant": "AMAZON", "category": "Shopping" },
+      { "id": "chat-tx-06", "emailMessageId": "chat-e-06", "date": "2025-01-01T10:00:00.000Z", "amount": 85000, "direction": "credit", "type": "bank_transfer", "merchant": "SALARY", "category": "Transfer" }
+    ],
+    "question": "Give me a summary of my January spending",
+    "expectedTraits": ["Should break down by category", "Should mention total debits", "Should use ₹ formatting"]
+  },
+  {
+    "id": "chat-03",
+    "description": "Comparison question",
+    "seedData": [
+      { "id": "chat-tx-07", "emailMessageId": "chat-e-07", "date": "2025-01-10T10:00:00.000Z", "amount": 500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-08", "emailMessageId": "chat-e-08", "date": "2025-01-11T10:00:00.000Z", "amount": 285, "direction": "debit", "type": "upi", "merchant": "UBER", "category": "Transport" }
+    ],
+    "question": "Do I spend more on food or transport?",
+    "expectedTraits": ["Should compare food and transport spending", "Should give concrete amounts"]
+  },
+  {
+    "id": "chat-04",
+    "description": "Specific merchant question",
+    "seedData": [
+      { "id": "chat-tx-09", "emailMessageId": "chat-e-09", "date": "2025-01-05T10:00:00.000Z", "amount": 350, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-10", "emailMessageId": "chat-e-10", "date": "2025-01-10T10:00:00.000Z", "amount": 420, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-11", "emailMessageId": "chat-e-11", "date": "2025-01-15T10:00:00.000Z", "amount": 280, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" }
+    ],
+    "question": "How much have I spent at Swiggy?",
+    "expectedTraits": ["Should mention total Swiggy spending", "Should reference number of transactions"]
+  },
+  {
+    "id": "chat-05",
+    "description": "Savings question",
+    "seedData": [
+      { "id": "chat-tx-12", "emailMessageId": "chat-e-12", "date": "2025-01-01T10:00:00.000Z", "amount": 85000, "direction": "credit", "type": "bank_transfer", "merchant": "SALARY", "category": "Transfer" },
+      { "id": "chat-tx-13", "emailMessageId": "chat-e-13", "date": "2025-01-10T10:00:00.000Z", "amount": 5000, "direction": "debit", "type": "upi", "merchant": "Various", "category": "Food" },
+      { "id": "chat-tx-14", "emailMessageId": "chat-e-14", "date": "2025-01-11T10:00:00.000Z", "amount": 35000, "direction": "debit", "type": "loan", "merchant": "HOME LOAN EMI", "category": "Bills" }
+    ],
+    "question": "How much money do I have left this month?",
+    "expectedTraits": ["Should calculate income minus expenses", "Should mention credits and debits"]
+  },
+  {
+    "id": "chat-06",
+    "description": "Investment tracking",
+    "seedData": [
+      { "id": "chat-tx-15", "emailMessageId": "chat-e-15", "date": "2025-01-05T10:00:00.000Z", "amount": 10000, "direction": "debit", "type": "sip", "merchant": "HDFC Mid Cap Fund", "category": "Investment" },
+      { "id": "chat-tx-16", "emailMessageId": "chat-e-16", "date": "2025-01-05T10:00:00.000Z", "amount": 5000, "direction": "debit", "type": "sip", "merchant": "Axis Bluechip Fund", "category": "Investment" }
+    ],
+    "question": "How much am I investing monthly?",
+    "expectedTraits": ["Should total ₹15,000 in investments", "Should list the fund names"]
+  },
+  {
+    "id": "chat-07",
+    "description": "Bill tracking",
+    "seedData": [
+      { "id": "chat-tx-17", "emailMessageId": "chat-e-17", "date": "2025-01-05T10:00:00.000Z", "amount": 35000, "direction": "debit", "type": "loan", "merchant": "HOME LOAN EMI", "category": "Bills" },
+      { "id": "chat-tx-18", "emailMessageId": "chat-e-18", "date": "2025-01-10T10:00:00.000Z", "amount": 2800, "direction": "debit", "type": "upi", "merchant": "TATA POWER", "category": "Bills" },
+      { "id": "chat-tx-19", "emailMessageId": "chat-e-19", "date": "2025-01-12T10:00:00.000Z", "amount": 399, "direction": "debit", "type": "upi", "merchant": "JIO RECHARGE", "category": "Bills" }
+    ],
+    "question": "What are my monthly bills?",
+    "expectedTraits": ["Should list all bills", "Should mention amounts for each"]
+  },
+  {
+    "id": "chat-08",
+    "description": "Transport spending",
+    "seedData": [
+      { "id": "chat-tx-20", "emailMessageId": "chat-e-20", "date": "2025-01-10T10:00:00.000Z", "amount": 285, "direction": "debit", "type": "upi", "merchant": "UBER", "category": "Transport" },
+      { "id": "chat-tx-21", "emailMessageId": "chat-e-21", "date": "2025-01-12T10:00:00.000Z", "amount": 180, "direction": "debit", "type": "upi", "merchant": "OLA", "category": "Transport" },
+      { "id": "chat-tx-22", "emailMessageId": "chat-e-22", "date": "2025-01-14T10:00:00.000Z", "amount": 2500, "direction": "debit", "type": "credit_card", "merchant": "HP PETROL", "category": "Transport" }
+    ],
+    "question": "How much am I spending on transport?",
+    "expectedTraits": ["Should total transport spending", "Should mention cabs vs fuel"]
+  },
+  {
+    "id": "chat-09",
+    "description": "Largest expenses",
+    "seedData": [
+      { "id": "chat-tx-23", "emailMessageId": "chat-e-23", "date": "2025-01-05T10:00:00.000Z", "amount": 35000, "direction": "debit", "type": "loan", "merchant": "HOME LOAN EMI", "category": "Bills" },
+      { "id": "chat-tx-24", "emailMessageId": "chat-e-24", "date": "2025-01-10T10:00:00.000Z", "amount": 15999, "direction": "debit", "type": "credit_card", "merchant": "RELIANCE DIGITAL", "category": "Shopping" },
+      { "id": "chat-tx-25", "emailMessageId": "chat-e-25", "date": "2025-01-12T10:00:00.000Z", "amount": 250, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" }
+    ],
+    "question": "What are my top 3 biggest expenses?",
+    "expectedTraits": ["Should list expenses in descending order", "Should include amounts"]
+  },
+  {
+    "id": "chat-10",
+    "description": "Entertainment spending",
+    "seedData": [
+      { "id": "chat-tx-26", "emailMessageId": "chat-e-26", "date": "2025-01-10T10:00:00.000Z", "amount": 649, "direction": "debit", "type": "credit_card", "merchant": "NETFLIX", "category": "Entertainment" },
+      { "id": "chat-tx-27", "emailMessageId": "chat-e-27", "date": "2025-01-11T10:00:00.000Z", "amount": 119, "direction": "debit", "type": "credit_card", "merchant": "SPOTIFY", "category": "Entertainment" },
+      { "id": "chat-tx-28", "emailMessageId": "chat-e-28", "date": "2025-01-15T10:00:00.000Z", "amount": 750, "direction": "debit", "type": "credit_card", "merchant": "PVR CINEMAS", "category": "Entertainment" }
+    ],
+    "question": "How much do I spend on entertainment?",
+    "expectedTraits": ["Should total entertainment spending", "Should mention subscriptions"]
+  },
+  {
+    "id": "chat-11",
+    "description": "Subscription identification",
+    "seedData": [
+      { "id": "chat-tx-29", "emailMessageId": "chat-e-29", "date": "2025-01-10T10:00:00.000Z", "amount": 649, "direction": "debit", "type": "credit_card", "merchant": "NETFLIX", "category": "Entertainment" },
+      { "id": "chat-tx-30", "emailMessageId": "chat-e-30", "date": "2025-01-10T10:00:00.000Z", "amount": 119, "direction": "debit", "type": "credit_card", "merchant": "SPOTIFY", "category": "Entertainment" },
+      { "id": "chat-tx-31", "emailMessageId": "chat-e-31", "date": "2025-01-10T10:00:00.000Z", "amount": 1099, "direction": "debit", "type": "upi", "merchant": "ACT FIBERNET", "category": "Bills" }
+    ],
+    "question": "What subscriptions am I paying for?",
+    "expectedTraits": ["Should identify recurring services", "Should list Netflix, Spotify, ACT Fibernet"]
+  },
+  {
+    "id": "chat-12",
+    "description": "Empty data handling",
+    "seedData": [],
+    "question": "How much did I spend this month?",
+    "expectedTraits": ["Should indicate no data or zero spending", "Should not hallucinate numbers"]
+  },
+  {
+    "id": "chat-13",
+    "description": "Spending advice",
+    "seedData": [
+      { "id": "chat-tx-32", "emailMessageId": "chat-e-32", "date": "2025-01-05T10:00:00.000Z", "amount": 3500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-33", "emailMessageId": "chat-e-33", "date": "2025-01-10T10:00:00.000Z", "amount": 2800, "direction": "debit", "type": "upi", "merchant": "ZOMATO", "category": "Food" },
+      { "id": "chat-tx-34", "emailMessageId": "chat-e-34", "date": "2025-01-15T10:00:00.000Z", "amount": 1500, "direction": "debit", "type": "upi", "merchant": "DOMINOS", "category": "Food" }
+    ],
+    "question": "Am I spending too much on food delivery?",
+    "expectedTraits": ["Should total food delivery spending", "Should provide context or suggestion"]
+  },
+  {
+    "id": "chat-14",
+    "description": "Bank-specific query",
+    "seedData": [
+      { "id": "chat-tx-35", "emailMessageId": "chat-e-35", "date": "2025-01-10T10:00:00.000Z", "amount": 500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food", "bank": "HDFC" },
+      { "id": "chat-tx-36", "emailMessageId": "chat-e-36", "date": "2025-01-11T10:00:00.000Z", "amount": 3499, "direction": "debit", "type": "credit_card", "merchant": "AMAZON", "category": "Shopping", "bank": "ICICI" }
+    ],
+    "question": "Show me all HDFC transactions",
+    "expectedTraits": ["Should filter by HDFC bank", "Should show SWIGGY transaction"]
+  },
+  {
+    "id": "chat-15",
+    "description": "Date range query",
+    "seedData": [
+      { "id": "chat-tx-37", "emailMessageId": "chat-e-37", "date": "2025-01-05T10:00:00.000Z", "amount": 500, "direction": "debit", "type": "upi", "merchant": "SWIGGY", "category": "Food" },
+      { "id": "chat-tx-38", "emailMessageId": "chat-e-38", "date": "2025-01-10T10:00:00.000Z", "amount": 300, "direction": "debit", "type": "upi", "merchant": "ZOMATO", "category": "Food" },
+      { "id": "chat-tx-39", "emailMessageId": "chat-e-39", "date": "2025-01-20T10:00:00.000Z", "amount": 400, "direction": "debit", "type": "upi", "merchant": "UBER", "category": "Transport" }
+    ],
+    "question": "What did I spend in the first week of January?",
+    "expectedTraits": ["Should only include transactions from Jan 1-7", "Should mention SWIGGY ₹500"]
+  },
+  {
+    "id": "chat-16",
+    "description": "Income question",
+    "seedData": [
+      { "id": "chat-tx-40", "emailMessageId": "chat-e-40", "date": "2025-01-01T10:00:00.000Z", "amount": 85000, "direction": "credit", "type": "bank_transfer", "merchant": "ACME CORP", "category": "Transfer" },
+      { "id": "chat-tx-41", "emailMessageId": "chat-e-41", "date": "2025-01-15T10:00:00.000Z", "amount": 5000, "direction": "credit", "type": "upi", "merchant": "FREELANCE CLIENT", "category": "Transfer" }
+    ],
+    "question": "What is my total income this month?",
+    "expectedTraits": ["Should total ₹90,000 in credits", "Should list income sources"]
+  },
+  {
+    "id": "chat-17",
+    "description": "Loan and EMI tracking",
+    "seedData": [
+      { "id": "chat-tx-42", "emailMessageId": "chat-e-42", "date": "2025-01-05T10:00:00.000Z", "amount": 35000, "direction": "debit", "type": "loan", "merchant": "HOME LOAN EMI", "category": "Bills" },
+      { "id": "chat-tx-43", "emailMessageId": "chat-e-43", "date": "2025-01-10T10:00:00.000Z", "amount": 18500, "direction": "debit", "type": "loan", "merchant": "CAR LOAN EMI", "category": "Bills" }
+    ],
+    "question": "How much am I paying in EMIs?",
+    "expectedTraits": ["Should total ₹53,500 in EMIs", "Should list home and car loans"]
+  },
+  {
+    "id": "chat-18",
+    "description": "Healthcare spending",
+    "seedData": [
+      { "id": "chat-tx-44", "emailMessageId": "chat-e-44", "date": "2025-01-10T10:00:00.000Z", "amount": 850, "direction": "debit", "type": "upi", "merchant": "APOLLO PHARMACY", "category": "Health" },
+      { "id": "chat-tx-45", "emailMessageId": "chat-e-45", "date": "2025-01-12T10:00:00.000Z", "amount": 5000, "direction": "debit", "type": "credit_card", "merchant": "FORTIS HOSPITAL", "category": "Health" }
+    ],
+    "question": "How much did I spend on healthcare?",
+    "expectedTraits": ["Should total ₹5,850 on health", "Should list pharmacy and hospital"]
+  },
+  {
+    "id": "chat-19",
+    "description": "Shopping analysis",
+    "seedData": [
+      { "id": "chat-tx-46", "emailMessageId": "chat-e-46", "date": "2025-01-10T10:00:00.000Z", "amount": 2499, "direction": "debit", "type": "credit_card", "merchant": "AMAZON", "category": "Shopping" },
+      { "id": "chat-tx-47", "emailMessageId": "chat-e-47", "date": "2025-01-12T10:00:00.000Z", "amount": 1599, "direction": "debit", "type": "credit_card", "merchant": "FLIPKART", "category": "Shopping" },
+      { "id": "chat-tx-48", "emailMessageId": "chat-e-48", "date": "2025-01-14T10:00:00.000Z", "amount": 999, "direction": "debit", "type": "credit_card", "merchant": "MYNTRA", "category": "Shopping" }
+    ],
+    "question": "Where am I shopping the most?",
+    "expectedTraits": ["Should rank shopping merchants", "Should identify Amazon as top"]
+  },
+  {
+    "id": "chat-20",
+    "description": "Budget recommendation",
+    "seedData": [
+      { "id": "chat-tx-49", "emailMessageId": "chat-e-49", "date": "2025-01-01T10:00:00.000Z", "amount": 85000, "direction": "credit", "type": "bank_transfer", "merchant": "SALARY", "category": "Transfer" },
+      { "id": "chat-tx-50", "emailMessageId": "chat-e-50", "date": "2025-01-05T10:00:00.000Z", "amount": 35000, "direction": "debit", "type": "loan", "merchant": "HOME LOAN", "category": "Bills" },
+      { "id": "chat-tx-51", "emailMessageId": "chat-e-51", "date": "2025-01-10T10:00:00.000Z", "amount": 15000, "direction": "debit", "type": "sip", "merchant": "MUTUAL FUND", "category": "Investment" },
+      { "id": "chat-tx-52", "emailMessageId": "chat-e-52", "date": "2025-01-12T10:00:00.000Z", "amount": 8000, "direction": "debit", "type": "upi", "merchant": "FOOD DELIVERY", "category": "Food" },
+      { "id": "chat-tx-53", "emailMessageId": "chat-e-53", "date": "2025-01-15T10:00:00.000Z", "amount": 5000, "direction": "debit", "type": "credit_card", "merchant": "SHOPPING", "category": "Shopping" }
+    ],
+    "question": "How am I doing financially this month?",
+    "expectedTraits": ["Should summarize income vs expenses", "Should mention savings or deficit"]
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "id": "e2e-basic-01",
+    "description": "Basic UPI debit email through full pipeline",
+    "emails": [
+      {
+        "messageId": "e2e-email-01",
+        "from": "alerts@hdfcbank.net",
+        "subject": "UPI Transaction Alert",
+        "date": "2025-01-15T10:00:00.000Z",
+        "bodyText": "Dear Customer, Rs.500.00 has been debited from your a/c **1234 on 15-01-2025 by UPI. UPI Ref: 501234567890. Paid to: ZOMATO via Google Pay. HDFC Bank."
+      }
+    ],
+    "expectedTransactions": [
+      {
+        "amount": 500.0,
+        "direction": "debit",
+        "type": "upi",
+        "merchant": "ZOMATO"
+      }
+    ]
+  },
+  {
+    "id": "e2e-cc-01",
+    "description": "Credit card transaction through full pipeline",
+    "emails": [
+      {
+        "messageId": "e2e-email-02",
+        "from": "alerts@hdfcbank.net",
+        "subject": "Credit Card Alert",
+        "date": "2025-01-12T18:00:00.000Z",
+        "bodyText": "Your HDFC Bank Credit Card XX9876 has been used for INR 2,999.00 at FLIPKART.COM on 12-01-2025."
+      }
+    ],
+    "expectedTransactions": [
+      {
+        "amount": 2999.0,
+        "direction": "debit",
+        "type": "credit_card",
+        "merchant": "FLIPKART.COM"
+      }
+    ]
+  },
+  {
+    "id": "e2e-multiple-01",
+    "description": "Multiple emails in one batch",
+    "emails": [
+      {
+        "messageId": "e2e-email-03",
+        "from": "alerts@hdfcbank.net",
+        "subject": "UPI Alert",
+        "date": "2025-01-15T10:00:00.000Z",
+        "bodyText": "Rs.200.00 debited from a/c **1234 via UPI on 15-01-2025. Paid to: CHAI POINT. Ref: 111234567890. HDFC Bank."
+      },
+      {
+        "messageId": "e2e-email-04",
+        "from": "alerts@hdfcbank.net",
+        "subject": "EMI Debit",
+        "date": "2025-01-15T04:00:00.000Z",
+        "bodyText": "Your Personal Loan EMI of Rs.12,000.00 has been debited from your a/c **1234 on 15-01-2025. Loan A/c: PL001234567. EMI No: 12. HDFC Bank."
+      }
+    ],
+    "expectedTransactions": [
+      {
+        "amount": 200.0,
+        "direction": "debit",
+        "type": "upi",
+        "merchant": "CHAI POINT"
+      },
+      {
+        "amount": 12000.0,
+        "direction": "debit",
+        "type": "loan",
+        "merchant": "Personal Loan EMI"
+      }
+    ]
+  },
+  {
+    "id": "e2e-neft-salary-01",
+    "description": "Salary credit via NEFT",
+    "emails": [
+      {
+        "messageId": "e2e-email-05",
+        "from": "alerts@hdfcbank.net",
+        "subject": "NEFT Credit Alert",
+        "date": "2025-01-01T06:00:00.000Z",
+        "bodyText": "INR 75,000.00 credited to your a/c **1234 by NEFT from TECHCORP SOLUTIONS on 01-01-2025. Ref: HDFC0001234567. Salary credit. HDFC Bank."
+      }
+    ],
+    "expectedTransactions": [
+      {
+        "amount": 75000.0,
+        "direction": "credit",
+        "type": "bank_transfer",
+        "merchant": "TECHCORP SOLUTIONS"
+      }
+    ]
+  },
+  {
+    "id": "e2e-sip-01",
+    "description": "SIP investment debit",
+    "emails": [
+      {
+        "messageId": "e2e-email-06",
+        "from": "alerts@hdfcbank.net",
+        "subject": "SIP Debit Alert",
+        "date": "2025-01-05T04:00:00.000Z",
+        "bodyText": "Rs.5,000.00 debited from your a/c **1234 on 05-01-2025 towards SIP in Parag Parikh Flexi Cap Fund Direct Growth. Folio: 5556667778. NAV: 65.23. Units: 76.66. HDFC Bank."
+      }
+    ],
+    "expectedTransactions": [
+      {
+        "amount": 5000.0,
+        "direction": "debit",
+        "type": "sip",
+        "merchant": "Parag Parikh Flexi Cap Fund"
+      }
+    ]
+  }
+]

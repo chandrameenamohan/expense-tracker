@@ -1,0 +1,270 @@
+[
+  {
+    "id": "upi-debit-gpay-01",
+    "description": "Google Pay UPI debit to merchant",
+    "input": {
+      "messageId": "eval-upi-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "UPI Transaction Alert",
+      "date": "2025-01-15T10:00:00.000Z",
+      "bodyText": "Dear Customer, Rs.250.00 has been debited from your a/c **1234 on 15-01-2025 by UPI. UPI Ref: 501234567890. Paid to: SWIGGY via Google Pay. Your balance is Rs.45,000.00."
+    },
+    "expected": {
+      "amount": 250.0,
+      "direction": "debit",
+      "type": "upi",
+      "merchant": "SWIGGY",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "upi-credit-01",
+    "description": "UPI credit received",
+    "input": {
+      "messageId": "eval-upi-02",
+      "from": "alerts@icici.com",
+      "subject": "UPI Credit Alert",
+      "date": "2025-01-14T09:00:00.000Z",
+      "bodyText": "INR 5,000.00 credited to your A/c XX5678 on 14-01-2025 via UPI. UPI Ref No: 601234567890. Received from: RAHUL SHARMA@okaxis. -ICICI Bank"
+    },
+    "expected": {
+      "amount": 5000.0,
+      "direction": "credit",
+      "type": "upi",
+      "merchant": "RAHUL SHARMA"
+    }
+  },
+  {
+    "id": "upi-phonepe-01",
+    "description": "PhonePe UPI debit",
+    "input": {
+      "messageId": "eval-upi-03",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Transaction Alert",
+      "date": "2025-01-13T14:30:00.000Z",
+      "bodyText": "Rs 1,500.00 debited from a/c **4321 via PhonePe UPI txn to BIGBASKET on 13-Jan-2025. Ref 701234567890. HDFC Bank."
+    },
+    "expected": {
+      "amount": 1500.0,
+      "direction": "debit",
+      "type": "upi",
+      "merchant": "BIGBASKET",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "cc-debit-hdfc-01",
+    "description": "HDFC credit card transaction",
+    "input": {
+      "messageId": "eval-cc-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Credit Card Transaction Alert",
+      "date": "2025-01-12T18:00:00.000Z",
+      "bodyText": "Alert: Your HDFC Bank Credit Card XX9876 has been used for a transaction of INR 3,499.00 at AMAZON.IN on 12-01-2025. If not done by you, call 18002586161."
+    },
+    "expected": {
+      "amount": 3499.0,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "AMAZON.IN",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "cc-debit-icici-01",
+    "description": "ICICI credit card transaction",
+    "input": {
+      "messageId": "eval-cc-02",
+      "from": "alerts@icici.com",
+      "subject": "ICICI Card Transaction",
+      "date": "2025-01-11T20:15:00.000Z",
+      "bodyText": "Your ICICI Bank Credit Card ending 5432 has been used for Rs.899.00 at NETFLIX.COM on 11-Jan-25. Available limit: Rs.1,50,000."
+    },
+    "expected": {
+      "amount": 899.0,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "NETFLIX.COM",
+      "bank": "ICICI"
+    }
+  },
+  {
+    "id": "neft-credit-01",
+    "description": "NEFT salary credit",
+    "input": {
+      "messageId": "eval-neft-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Credit Alert - NEFT",
+      "date": "2025-01-01T06:00:00.000Z",
+      "bodyText": "Dear Customer, INR 85,000.00 has been credited to your a/c **1234 by NEFT from ACME CORP PVT LTD on 01-01-2025. Ref: HDFC0001234567. Salary credit."
+    },
+    "expected": {
+      "amount": 85000.0,
+      "direction": "credit",
+      "type": "bank_transfer",
+      "merchant": "ACME CORP PVT LTD",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "neft-debit-01",
+    "description": "NEFT outward transfer",
+    "input": {
+      "messageId": "eval-neft-02",
+      "from": "alerts@sbi.co.in",
+      "subject": "NEFT Debit Alert",
+      "date": "2025-01-10T11:00:00.000Z",
+      "bodyText": "Your a/c XX6789 is debited for Rs.25,000.00 on 10-01-2025 by NEFT transfer to JOHN DOE. Ref No: SBI0009876543. -SBI"
+    },
+    "expected": {
+      "amount": 25000.0,
+      "direction": "debit",
+      "type": "bank_transfer",
+      "merchant": "JOHN DOE",
+      "bank": "SBI"
+    }
+  },
+  {
+    "id": "sip-hdfc-01",
+    "description": "HDFC mutual fund SIP debit",
+    "input": {
+      "messageId": "eval-sip-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "SIP Auto Debit Alert",
+      "date": "2025-01-05T04:00:00.000Z",
+      "bodyText": "Dear Customer, Rs.10,000.00 has been debited from your a/c **1234 on 05-01-2025 towards SIP investment in HDFC Mid Cap Opportunities Fund - Growth. Folio: 1234567890. NAV: 102.45. Units: 97.61. HDFC Bank."
+    },
+    "expected": {
+      "amount": 10000.0,
+      "direction": "debit",
+      "type": "sip",
+      "merchant": "HDFC Mid Cap Opportunities Fund",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "sip-icici-01",
+    "description": "ICICI mutual fund SIP",
+    "input": {
+      "messageId": "eval-sip-02",
+      "from": "alerts@icici.com",
+      "subject": "Mutual Fund SIP Debit",
+      "date": "2025-01-07T05:00:00.000Z",
+      "bodyText": "INR 5,000.00 debited from your ICICI Bank a/c XX5678 on 07-Jan-2025 for SIP in Axis Bluechip Fund Direct Growth. Folio No: 9876543210. -ICICI Bank"
+    },
+    "expected": {
+      "amount": 5000.0,
+      "direction": "debit",
+      "type": "sip",
+      "merchant": "Axis Bluechip Fund"
+    }
+  },
+  {
+    "id": "loan-emi-01",
+    "description": "Home loan EMI debit",
+    "input": {
+      "messageId": "eval-loan-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "EMI Debit Alert",
+      "date": "2025-01-05T03:00:00.000Z",
+      "bodyText": "Dear Customer, your Home Loan EMI of Rs.35,000.00 has been debited from your a/c **1234 on 05-01-2025. Loan A/c: HL001234567. EMI No: 48. HDFC Bank."
+    },
+    "expected": {
+      "amount": 35000.0,
+      "direction": "debit",
+      "type": "loan",
+      "merchant": "Home Loan EMI",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "loan-car-01",
+    "description": "Car loan EMI debit",
+    "input": {
+      "messageId": "eval-loan-02",
+      "from": "alerts@icici.com",
+      "subject": "Loan EMI Auto Debit",
+      "date": "2025-01-10T04:00:00.000Z",
+      "bodyText": "Rs.18,500.00 debited from your a/c XX5678 towards Car Loan EMI on 10-01-2025. Loan A/c: CL009876543. EMI 24 of 60. -ICICI Bank"
+    },
+    "expected": {
+      "amount": 18500.0,
+      "direction": "debit",
+      "type": "loan",
+      "merchant": "Car Loan EMI",
+      "bank": "ICICI"
+    }
+  },
+  {
+    "id": "upi-small-amount-01",
+    "description": "Small UPI payment (edge case)",
+    "input": {
+      "messageId": "eval-upi-small-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "UPI Alert",
+      "date": "2025-01-16T08:00:00.000Z",
+      "bodyText": "Rs.1.00 debited from your a/c **1234 via UPI on 16-01-2025. Paid to: PHONEPE MERCHANT@ybl. Ref: 801234567890. HDFC Bank."
+    },
+    "expected": {
+      "amount": 1.0,
+      "direction": "debit",
+      "type": "upi",
+      "merchant": "PHONEPE MERCHANT",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "upi-large-amount-01",
+    "description": "Large UPI payment",
+    "input": {
+      "messageId": "eval-upi-large-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "UPI Transaction Alert",
+      "date": "2025-01-16T12:00:00.000Z",
+      "bodyText": "INR 1,00,000.00 has been debited from your a/c **1234 on 16-01-2025 by UPI txn. UPI Ref: 901234567890. Paid to: LANDLORD REALTY. HDFC Bank."
+    },
+    "expected": {
+      "amount": 100000.0,
+      "direction": "debit",
+      "type": "upi",
+      "merchant": "LANDLORD REALTY",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "cc-intl-01",
+    "description": "International credit card transaction",
+    "input": {
+      "messageId": "eval-cc-intl-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Credit Card Transaction Alert",
+      "date": "2025-01-15T22:00:00.000Z",
+      "bodyText": "Your HDFC Credit Card XX9876 used for INR 7,245.00 at SPOTIFY PREMIUM STOCKHOLM on 15-01-2025. This is an international transaction."
+    },
+    "expected": {
+      "amount": 7245.0,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "SPOTIFY PREMIUM STOCKHOLM",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "imps-credit-01",
+    "description": "IMPS credit transfer",
+    "input": {
+      "messageId": "eval-imps-01",
+      "from": "alerts@axisbank.com",
+      "subject": "IMPS Credit Alert",
+      "date": "2025-01-14T16:00:00.000Z",
+      "bodyText": "Rs.15,000.00 credited to your a/c XX3456 via IMPS from PRIYA SHARMA on 14-01-2025. Ref: AXIS0005678901. Axis Bank."
+    },
+    "expected": {
+      "amount": 15000.0,
+      "direction": "credit",
+      "type": "bank_transfer",
+      "merchant": "PRIYA SHARMA",
+      "bank": "Axis"
+    }
+  }
+]

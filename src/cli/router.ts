@@ -40,5 +40,7 @@ Commands:
   recategorize   Override a transaction's category
   reparse        Re-parse all raw emails
   chat           Conversational query mode
+  remerchant     Override a transaction's merchant name
+  flag           Flag a transaction as correct/wrong for evals
   help           Show this help message`);
 }

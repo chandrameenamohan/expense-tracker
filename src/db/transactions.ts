@@ -158,6 +158,20 @@ export function listTransactions(
   return rows.map(rowToTransaction);
 }
 
+/** Update a transaction's merchant. */
+export function updateTransactionMerchant(
+  id: string,
+  merchant: string,
+): boolean {
+  const db = getDb();
+  const result = db
+    .prepare(
+      "UPDATE transactions SET merchant = ?, updated_at = datetime('now') WHERE id = ?",
+    )
+    .run(merchant, id);
+  return result.changes > 0;
+}
+
 /** Update a transaction's category. */
 export function updateTransactionCategory(
   id: string,

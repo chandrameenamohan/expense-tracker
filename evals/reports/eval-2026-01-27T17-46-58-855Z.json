@@ -1,0 +1,173 @@
+{
+  "timestamp": "2026-01-27T17:46:58.855Z",
+  "summaries": [
+    {
+      "component": "parser",
+      "total": 15,
+      "passed": 4,
+      "failed": 11,
+      "passRate": 0.26666666666666666,
+      "avgScore": 0.8466666666666668,
+      "results": [
+        {
+          "id": "upi-debit-gpay-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "SWIGGY",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-credit-01",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "RAHUL SHARMA",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-phonepe-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "BIGBASKET",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "cc-debit-hdfc-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "cc-debit-icici-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "neft-credit-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "ACME CORP PVT LTD",
+              "actual": "Salary",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "neft-debit-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "JOHN DOE",
+              "actual": "NEFT transfer to JOHN DOE",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "sip-hdfc-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "HDFC Mid Cap Opportunities Fund",
+              "actual": "HDFC Mid Cap Opportunities Fund - Growth",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "sip-icici-01",
+          "pass": false,
+          "score": 0.75,
+          "details": {
+            "merchant": {
+              "expected": "Axis Bluechip Fund",
+              "actual": "Ax",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "loan-emi-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "Home Loan EMI",
+              "actual": "Home Loan",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "loan-car-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "Car Loan EMI",
+              "actual": "Car Loan",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-small-amount-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "PHONEPE MERCHANT",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "upi-large-amount-01",
+          "pass": false,
+          "score": 0.8,
+          "details": {
+            "merchant": {
+              "expected": "LANDLORD REALTY",
+              "actual": "Unknown",
+              "match": false
+            }
+          }
+        },
+        {
+          "id": "cc-intl-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "imps-credit-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        }
+      ]
+    }
+  ],
+  "overallPassRate": 0.26666666666666666,
+  "overallAvgScore": 0.8466666666666668
+}

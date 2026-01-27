@@ -10,6 +10,8 @@ import { summaryCommand } from "./cli/commands/summary";
 import { reviewCommand } from "./cli/commands/review";
 import { reparseCommand } from "./cli/commands/reparse";
 import { chatCommand } from "./cli/commands/chat";
+import { flagCommand } from "./cli/commands/flag";
+import { remerchantCommand } from "./cli/commands/remerchant";
 
 // Register commands
 registerCommand("setup", setupCommand);
@@ -20,6 +22,8 @@ registerCommand("summary", summaryCommand);
 registerCommand("review", reviewCommand);
 registerCommand("reparse", reparseCommand);
 registerCommand("chat", chatCommand);
+registerCommand("flag", flagCommand);
+registerCommand("remerchant", remerchantCommand);
 
 // Run migrations on startup
 runMigrations();

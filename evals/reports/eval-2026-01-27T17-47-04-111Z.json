@@ -1,0 +1,151 @@
+{
+  "timestamp": "2026-01-27T17:47:04.111Z",
+  "summaries": [
+    {
+      "component": "alerts",
+      "total": 14,
+      "passed": 4,
+      "failed": 10,
+      "passRate": 0.2857142857142857,
+      "avgScore": 0.2857142857142857,
+      "results": [
+        {
+          "id": "alert-spike-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-large-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-new-cat-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-no-alert-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-multiple-large-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-credit-no-alert-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-empty-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-spike-transport-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-boundary-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-below-threshold-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-multiple-spikes-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-spike-exact-threshold-01",
+          "pass": true,
+          "score": 1,
+          "details": {}
+        },
+        {
+          "id": "alert-spike-just-above-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "spending_spike_count": {
+              "expected": 1,
+              "actual": 0
+            }
+          }
+        },
+        {
+          "id": "alert-large-multiple-categories-01",
+          "pass": false,
+          "score": 0,
+          "details": {
+            "new_category_count": {
+              "expected": 2,
+              "actual": 0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "overallPassRate": 0.2857142857142857,
+  "overallAvgScore": 0.2857142857142857
+}
