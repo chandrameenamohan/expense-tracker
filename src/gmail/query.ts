@@ -34,8 +34,8 @@ const SUBJECT_KEYWORDS = [
  * Optionally filters by date range using `after:`.
  */
 export function buildQuery(afterDate?: Date): string {
-  const fromClause = `from:(${SENDERS.join(" OR ")})`;
-  const subjectClause = `subject:(${SUBJECT_KEYWORDS.join(" OR ")})`;
+  const fromClause = `{${SENDERS.map((s) => `from:${s}`).join(" ")}}`;
+  const subjectClause = `{${SUBJECT_KEYWORDS.map((k) => `subject:${k}`).join(" ")}}`;
 
   let query = `${fromClause} ${subjectClause}`;
 
