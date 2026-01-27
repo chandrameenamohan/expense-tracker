@@ -10,7 +10,7 @@ AI-powered personal expense tracker that parses transaction emails from Gmail, a
 - **Language**: TypeScript (strict mode)
 - **Database**: SQLite via better-sqlite3
 - **Email**: Gmail API (OAuth2)
-- **AI**: Claude (via claude code auth token)
+- **AI**: Claude via `claude` CLI subprocess (Claude Code Max plan — no Anthropic API key)
 - **Linting/Formatting**: Biome
 
 ## Project Structure

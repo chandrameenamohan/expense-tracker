@@ -16,7 +16,10 @@ Read `AGENTS.md` for project conventions. Read `IMPLEMENTATION_PLAN.md` for the 
    - Ensure `bun test` passes
    - Ensure `bun run typecheck` passes
 4. Mark the task as `[x]` in `IMPLEMENTATION_PLAN.md`.
-5. If all tasks are complete, output `ALL_TASKS_COMPLETE`.
+5. Add an indented done-note below the completed task:
+   > Done: `files created/modified`. Key exports: `exports`. Notes: `anything the next task needs to know`.
+6. **Stop and ask the user for permission before starting the next task.**
+7. If all tasks are complete, output `ALL_TASKS_COMPLETE`.
 
 ## Rules
 

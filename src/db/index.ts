@@ -1,0 +1,46 @@
+export { getDb, getDbPath, closeDb, _resetDb, _setDb } from "./connection";
+export { runMigrations } from "./migrate";
+export {
+  insertRawEmail,
+  insertRawEmails,
+  getRawEmail,
+  getAllRawEmails,
+  rawEmailExists,
+} from "./raw-emails";
+export {
+  getSyncState,
+  setSyncState,
+  getLastSyncTimestamp,
+  setLastSyncTimestamp,
+  getTotalSyncedCount,
+  incrementTotalSyncedCount,
+  getLastMessageId,
+  setLastMessageId,
+  getAllSyncState,
+} from "./sync-state";
+export {
+  insertTransaction,
+  insertTransactions,
+  getTransaction,
+  getTransactionsByEmail,
+  listTransactions,
+  updateTransactionCategory,
+  updateTransactionReview,
+  deleteTransaction,
+  deleteAllTransactions,
+  countTransactions,
+} from "./transactions";
+export type { ListTransactionsOptions } from "./transactions";
+export {
+  getReviewQueue,
+  getReviewQueueCount,
+  resolveReview,
+  flagForReview,
+} from "./review-queue";
+export type { ReviewQueueOptions } from "./review-queue";
+export {
+  insertCategoryCorrection,
+  getCorrection,
+  getCorrectionsByMerchant,
+  getRecentCorrections,
+} from "./category-corrections";
