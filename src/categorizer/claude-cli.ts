@@ -45,6 +45,19 @@ function defaultSpawn(args: string[]): {
   };
 }
 
+/** Try to parse a string as JSON, stripping markdown code fences if needed. */
+function parseJsonString(text: string): unknown | null {
+  const stripped = text
+    .replace(/^```(?:json)?\s*\n?/m, "")
+    .replace(/\n?```\s*$/m, "")
+    .trim();
+  try {
+    return JSON.parse(stripped);
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Create a Claude CLI client.
  * @param spawnFn - Optional custom spawn function for testing
@@ -98,22 +111,14 @@ export function createClaudeCli(spawnFn?: SpawnFn) {
 
       try {
         const parsed = JSON.parse(result.output);
-        // Handle wrapper format: { result: "..." }
+        // Handle CLI envelope format: { type: "result", result: "..." }
         if (parsed && typeof parsed === "object" && typeof parsed.result === "string") {
-          return JSON.parse(parsed.result) as T;
+          return parseJsonString(parsed.result) as T;
         }
         return parsed as T;
       } catch {
-        // Try stripping markdown code fences
-        const stripped = result.output
-          .replace(/^```(?:json)?\s*\n?/m, "")
-          .replace(/\n?```\s*$/m, "")
-          .trim();
-        try {
-          return JSON.parse(stripped) as T;
-        } catch {
-          return null;
-        }
+        // Try stripping markdown code fences from raw output
+        return parseJsonString(result.output) as T ?? null;
       }
     },
 
