@@ -14,6 +14,7 @@ const SENDERS = [
   "donotreply@indusind.com",
   "alerts@kotak.com",
   "transact@unionbankofindia.co.in",
+  "chandrameenamohan@gmail.com",
 ];
 
 /** Transaction-related subject keywords */
@@ -25,6 +26,7 @@ const SUBJECT_KEYWORDS = [
   "UPI",
   "EMI",
   "SIP",
+  "account update",
 ];
 
 /**

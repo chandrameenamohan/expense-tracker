@@ -40,9 +40,10 @@ function makeDeps(overrides: Partial<SyncDeps> = {}): SyncDeps {
     syncEmails: async () => ({
       messagesFound: 0,
       newEmailsStored: 0,
+      newMessageIds: [],
       syncTimestamp: new Date(),
     }),
-    getAllRawEmails: () => [],
+    getRawEmailsByIds: () => [],
     createParserPipeline: () => new ParserRegistry(),
     parseEmails: () => [],
     createClaudeCli: () => ({
@@ -102,9 +103,10 @@ describe("syncCommand", () => {
         syncEmails: async () => ({
           messagesFound: 5,
           newEmailsStored: 3,
+          newMessageIds: ["msg-1"],
           syncTimestamp: new Date(),
         }),
-        getAllRawEmails: () => [makeRawEmail()],
+        getRawEmailsByIds: () => [makeRawEmail()],
         parseEmails: () => [tx],
         createClaudeCli: () => ({
           isAvailable: () => true,
@@ -133,9 +135,10 @@ describe("syncCommand", () => {
         syncEmails: async () => ({
           messagesFound: 1,
           newEmailsStored: 1,
+          newMessageIds: ["msg-1"],
           syncTimestamp: new Date(),
         }),
-        getAllRawEmails: () => [makeRawEmail()],
+        getRawEmailsByIds: () => [makeRawEmail()],
         parseEmails: () => [makeTx()],
         categorizeTransactions: () => {
           categorizeCalled = true;
@@ -156,9 +159,10 @@ describe("syncCommand", () => {
         syncEmails: async () => ({
           messagesFound: 1,
           newEmailsStored: 1,
+          newMessageIds: ["msg-1"],
           syncTimestamp: new Date(),
         }),
-        getAllRawEmails: () => [makeRawEmail()],
+        getRawEmailsByIds: () => [makeRawEmail()],
         parseEmails: () => [makeTx()],
         insertTransactions: () => 1,
         getReviewQueueCount: () => 3,
@@ -175,7 +179,7 @@ describe("syncCommand", () => {
       makeDeps({
         syncEmails: async (_client, opts) => {
           receivedSince = opts?.since;
-          return { messagesFound: 0, newEmailsStored: 0, syncTimestamp: new Date() };
+          return { messagesFound: 0, newEmailsStored: 0, newMessageIds: [], syncTimestamp: new Date() };
         },
       }),
     );

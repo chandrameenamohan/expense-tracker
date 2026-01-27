@@ -5,7 +5,7 @@
 
 import { authenticate } from "../../gmail/auth";
 import { syncEmails } from "../../gmail/sync";
-import { getAllRawEmails } from "../../db/raw-emails";
+import { getRawEmailsByIds } from "../../db/raw-emails";
 import { createParserPipeline, parseEmails } from "../../parser/pipeline";
 import { createClaudeCli } from "../../categorizer/claude-cli";
 import { categorizeTransactions } from "../../categorizer/categorize";
@@ -22,7 +22,7 @@ export interface SyncDeps {
   hasCredentials: () => boolean;
   authenticate: () => Promise<OAuth2Client>;
   syncEmails: (client: OAuth2Client, opts?: { since?: Date }) => Promise<SyncResult>;
-  getAllRawEmails: typeof getAllRawEmails;
+  getRawEmailsByIds: typeof getRawEmailsByIds;
   createParserPipeline: typeof createParserPipeline;
   parseEmails: typeof parseEmails;
   createClaudeCli: typeof createClaudeCli;
@@ -38,7 +38,7 @@ const defaultDeps: SyncDeps = {
   hasCredentials,
   authenticate,
   syncEmails,
-  getAllRawEmails,
+  getRawEmailsByIds,
   createParserPipeline,
   parseEmails,
   createClaudeCli,
@@ -120,9 +120,9 @@ export async function syncCommand(
     return;
   }
 
-  // Step 3: Parse emails
+  // Step 3: Parse only newly synced emails
   console.log("Parsing transactions...");
-  const rawEmails = deps.getAllRawEmails();
+  const rawEmails = deps.getRawEmailsByIds(syncResult.newMessageIds);
   const pipeline = deps.createParserPipeline();
   const transactions = deps.parseEmails(pipeline, rawEmails);
 

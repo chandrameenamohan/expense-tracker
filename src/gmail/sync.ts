@@ -1,7 +1,7 @@
 import type { OAuth2Client } from "googleapis-common";
 import { listMessageIds } from "./query";
 import { fetchMessages } from "./fetch";
-import { insertRawEmails } from "../db/raw-emails";
+import { insertRawEmailsWithIds } from "../db/raw-emails";
 import {
   getLastSyncTimestamp,
   setLastSyncTimestamp,
@@ -24,6 +24,7 @@ export interface SyncOptions {
 export interface SyncResult {
   messagesFound: number;
   newEmailsStored: number;
+  newMessageIds: string[];
   syncTimestamp: Date;
 }
 
@@ -37,26 +38,27 @@ export async function syncEmails(
   options: SyncOptions = {},
 ): Promise<SyncResult> {
   const lastSync = getLastSyncTimestamp();
-  const afterDate = lastSync ?? options.since ?? defaultSinceDate();
+  const afterDate = options.since ?? lastSync ?? defaultSinceDate();
 
   const messageIds = await listMessageIds(client, afterDate);
   const syncTimestamp = new Date();
 
   if (messageIds.length === 0) {
     setLastSyncTimestamp(syncTimestamp);
-    return { messagesFound: 0, newEmailsStored: 0, syncTimestamp };
+    return { messagesFound: 0, newEmailsStored: 0, newMessageIds: [], syncTimestamp };
   }
 
   const emails = await fetchMessages(client, messageIds);
-  const newCount = insertRawEmails(emails);
+  const { insertedIds } = insertRawEmailsWithIds(emails);
 
   setLastSyncTimestamp(syncTimestamp);
   setLastMessageId(messageIds[0]);
-  incrementTotalSyncedCount(newCount);
+  incrementTotalSyncedCount(insertedIds.length);
 
   return {
     messagesFound: messageIds.length,
-    newEmailsStored: newCount,
+    newEmailsStored: insertedIds.length,
+    newMessageIds: insertedIds,
     syncTimestamp,
   };
 }

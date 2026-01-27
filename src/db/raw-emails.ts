@@ -18,14 +18,20 @@ export function insertRawEmail(email: RawEmail): void {
   );
 }
 
-/** Insert multiple raw emails in a single transaction. */
+/** Insert multiple raw emails in a single transaction. Returns count inserted. */
 export function insertRawEmails(emails: RawEmail[]): number {
+  const { insertedIds } = insertRawEmailsWithIds(emails);
+  return insertedIds.length;
+}
+
+/** Insert multiple raw emails, returning both count and the message IDs that were actually inserted. */
+export function insertRawEmailsWithIds(emails: RawEmail[]): { insertedIds: string[] } {
   const db = getDb();
   const stmt = db.prepare(`
     INSERT OR IGNORE INTO raw_emails (message_id, from_address, subject, date, body_text, body_html)
     VALUES (?, ?, ?, ?, ?, ?)
   `);
-  let inserted = 0;
+  const insertedIds: string[] = [];
   const tx = db.transaction(() => {
     for (const email of emails) {
       const result = stmt.run(
@@ -36,11 +42,11 @@ export function insertRawEmails(emails: RawEmail[]): number {
         email.bodyText,
         email.bodyHtml ?? null,
       );
-      if (result.changes > 0) inserted++;
+      if (result.changes > 0) insertedIds.push(email.messageId);
     }
   });
   tx();
-  return inserted;
+  return { insertedIds };
 }
 
 /** Get a raw email by message_id. */
@@ -54,6 +60,17 @@ export function getRawEmail(messageId: string): RawEmail | null {
 export function getAllRawEmails(): RawEmail[] {
   const db = getDb();
   const rows = db.prepare("SELECT * FROM raw_emails ORDER BY date DESC").all() as Record<string, unknown>[];
+  return rows.map(rowToRawEmail);
+}
+
+/** Get raw emails by a list of message IDs. */
+export function getRawEmailsByIds(messageIds: string[]): RawEmail[] {
+  if (messageIds.length === 0) return [];
+  const db = getDb();
+  const placeholders = messageIds.map(() => "?").join(",");
+  const rows = db
+    .prepare(`SELECT * FROM raw_emails WHERE message_id IN (${placeholders}) ORDER BY date DESC`)
+    .all(...messageIds) as Record<string, unknown>[];
   return rows.map(rowToRawEmail);
 }
 

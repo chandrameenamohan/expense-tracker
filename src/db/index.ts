@@ -5,6 +5,7 @@ export {
   insertRawEmails,
   getRawEmail,
   getAllRawEmails,
+  getRawEmailsByIds,
   rawEmailExists,
 } from "./raw-emails";
 export {
