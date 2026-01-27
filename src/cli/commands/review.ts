@@ -12,6 +12,7 @@ import {
   insertCategoryCorrection,
   getDuplicateOf,
   getTransaction,
+  softDeleteTransaction,
 } from "../../db";
 import type { Transaction } from "../../types";
 import { isValidCategory, CATEGORIES } from "../../categorizer";
@@ -25,6 +26,7 @@ export interface ReviewDeps {
   insertCategoryCorrection: typeof insertCategoryCorrection;
   getDuplicateOf: typeof getDuplicateOf;
   getTransaction: typeof getTransaction;
+  softDeleteTransaction: typeof softDeleteTransaction;
   readLine: (prompt: string) => Promise<string>;
 }
 
@@ -44,6 +46,7 @@ const defaultDeps: ReviewDeps = {
   insertCategoryCorrection,
   getDuplicateOf,
   getTransaction,
+  softDeleteTransaction,
   readLine: defaultReadLine,
 };
 
@@ -83,7 +86,7 @@ export async function reviewCommand(
   }
 
   console.log(`${count} transaction(s) need review.\n`);
-  console.log("Actions: [a]pprove  [c]ategorize <category>  [s]kip  [q]uit");
+  console.log("Actions: [a]pprove  [c]ategorize <category>  [d]elete  [s]kip  [q]uit");
   console.log(`Categories: ${CATEGORIES.join(", ")}\n`);
 
   const queue = deps.getReviewQueue();
@@ -131,6 +134,11 @@ export async function reviewCommand(
         console.log(`Recategorized: ${oldCategory} → ${category}. Approved.\n`);
         reviewed++;
         handled = true;
+      } else if (action === "d" || action === "delete") {
+        deps.softDeleteTransaction(tx.id);
+        console.log("Deleted.\n");
+        reviewed++;
+        handled = true;
       } else if (action === "s" || action === "skip") {
         console.log("Skipped.\n");
         skipped++;
@@ -139,7 +147,7 @@ export async function reviewCommand(
         console.log(`\nReviewed: ${reviewed}, Skipped: ${skipped}, Remaining: ${queue.length - reviewed - skipped}`);
         return;
       } else {
-        console.log("Unknown action. Use [a]pprove, [c]ategorize <category>, [s]kip, or [q]uit.");
+        console.log("Unknown action. Use [a]pprove, [c]ategorize <category>, [d]elete, [s]kip, or [q]uit.");
       }
     }
   }

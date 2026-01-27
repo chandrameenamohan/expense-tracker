@@ -13,7 +13,7 @@ export function getReviewQueue(opts: ReviewQueueOptions = {}): Transaction[] {
   if (opts.source) {
     const db = getDb();
     const params: (string | number)[] = [opts.source];
-    let sql = "SELECT * FROM transactions WHERE needs_review = 1 AND source = ? ORDER BY date DESC";
+    let sql = "SELECT * FROM transactions WHERE needs_review = 1 AND deleted = 0 AND source = ? ORDER BY date DESC";
     if (opts.limit) {
       sql += " LIMIT ?";
       params.push(opts.limit);

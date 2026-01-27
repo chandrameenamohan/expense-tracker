@@ -29,6 +29,7 @@ export {
   updateTransactionCategory,
   updateTransactionReview,
   deleteTransaction,
+  softDeleteTransaction,
   deleteAllTransactions,
   countTransactions,
 } from "./transactions";

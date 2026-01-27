@@ -80,7 +80,7 @@ export function insertTransactions(txs: Transaction[]): number {
 export function getTransaction(id: string): Transaction | null {
   const db = getDb();
   const row = db
-    .prepare("SELECT * FROM transactions WHERE id = ?")
+    .prepare("SELECT * FROM transactions WHERE id = ? AND deleted = 0")
     .get(id) as Record<string, unknown> | null;
   return row ? rowToTransaction(row) : null;
 }
@@ -92,7 +92,7 @@ export function getTransactionsByEmail(
   const db = getDb();
   const rows = db
     .prepare(
-      "SELECT * FROM transactions WHERE email_message_id = ? ORDER BY date",
+      "SELECT * FROM transactions WHERE email_message_id = ? AND deleted = 0 ORDER BY date",
     )
     .all(emailMessageId) as Record<string, unknown>[];
   return rows.map(rowToTransaction);
@@ -114,7 +114,7 @@ export function listTransactions(
   opts: ListTransactionsOptions = {},
 ): Transaction[] {
   const db = getDb();
-  const conditions: string[] = [];
+  const conditions: string[] = ["deleted = 0"];
   const params: (string | number)[] = [];
 
   if (opts.startDate) {
@@ -200,11 +200,22 @@ export function updateTransactionReview(
   return result.changes > 0;
 }
 
-/** Delete a transaction by ID. */
+/** Hard delete a transaction by ID. */
 export function deleteTransaction(id: string): boolean {
   const db = getDb();
   const result = db
     .prepare("DELETE FROM transactions WHERE id = ?")
+    .run(id);
+  return result.changes > 0;
+}
+
+/** Soft delete a transaction by ID. */
+export function softDeleteTransaction(id: string): boolean {
+  const db = getDb();
+  const result = db
+    .prepare(
+      "UPDATE transactions SET deleted = 1, updated_at = datetime('now') WHERE id = ?",
+    )
     .run(id);
   return result.changes > 0;
 }
@@ -223,7 +234,7 @@ export function countTransactions(
   opts: Pick<ListTransactionsOptions, "needsReview" | "type" | "category"> = {},
 ): number {
   const db = getDb();
-  const conditions: string[] = [];
+  const conditions: string[] = ["deleted = 0"];
   const params: (string | number)[] = [];
 
   if (opts.needsReview !== undefined) {
