@@ -10,6 +10,8 @@ import {
   resolveReview,
   updateTransactionCategory,
   insertCategoryCorrection,
+  getDuplicateOf,
+  getTransaction,
 } from "../../db";
 import type { Transaction } from "../../types";
 import { isValidCategory, CATEGORIES } from "../../categorizer";
@@ -21,6 +23,8 @@ export interface ReviewDeps {
   resolveReview: typeof resolveReview;
   updateTransactionCategory: typeof updateTransactionCategory;
   insertCategoryCorrection: typeof insertCategoryCorrection;
+  getDuplicateOf: typeof getDuplicateOf;
+  getTransaction: typeof getTransaction;
   readLine: (prompt: string) => Promise<string>;
 }
 
@@ -38,6 +42,8 @@ const defaultDeps: ReviewDeps = {
   resolveReview,
   updateTransactionCategory,
   insertCategoryCorrection,
+  getDuplicateOf,
+  getTransaction,
   readLine: defaultReadLine,
 };
 
@@ -87,6 +93,19 @@ export async function reviewCommand(
   for (const tx of queue) {
     console.log(`--- Transaction ${reviewed + skipped + 1} of ${queue.length} ---`);
     console.log(formatForReview(tx));
+
+    // Show duplicate info if this transaction is flagged as a duplicate
+    const dupInfo = deps.getDuplicateOf(tx.id);
+    if (dupInfo) {
+      const keptTx = deps.getTransaction(dupInfo.keptTransactionId);
+      console.log(`\n  ⚠ POSSIBLE DUPLICATE of:`);
+      if (keptTx) {
+        console.log(formatForReview(keptTx));
+      } else {
+        console.log(`  Kept transaction ID: ${dupInfo.keptTransactionId}`);
+      }
+      console.log(`  Reason: ${dupInfo.reason}, Confidence: ${dupInfo.confidence != null ? (dupInfo.confidence * 100).toFixed(0) + "%" : "N/A"}`);
+    }
 
     let handled = false;
     while (!handled) {

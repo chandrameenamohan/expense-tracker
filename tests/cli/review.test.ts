@@ -50,6 +50,8 @@ function createMockDeps(
       insertCategoryCorrection: (merchant: string, orig: string, corrected: string, desc?: string) => {
         calls.insertCategoryCorrection.push([merchant, orig, corrected, desc]);
       },
+      getDuplicateOf: () => null,
+      getTransaction: () => null,
       readLine: async () => inputs[inputIdx++] ?? "q",
     },
     calls,

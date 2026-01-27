@@ -55,6 +55,7 @@ function makeDeps(overrides: Partial<SyncDeps> = {}): SyncDeps {
     getReviewQueueCount: () => 0,
     generateAlerts: () => [],
     printAlerts: () => {},
+    findAndFlagDuplicates: () => ({ candidatesFound: 0, duplicatesConfirmed: 0 }),
     ...overrides,
   };
 }

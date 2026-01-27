@@ -52,3 +52,9 @@ export {
   getAllEvalFlags,
 } from "./eval-flags";
 export type { EvalFlag } from "./eval-flags";
+export {
+  markAsDuplicate,
+  getDuplicatesFor,
+  getDuplicateOf,
+} from "./duplicate-groups";
+export type { DuplicateGroup } from "./duplicate-groups";

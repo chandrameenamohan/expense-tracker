@@ -13,6 +13,7 @@ import { insertTransactions } from "../../db/transactions";
 import { getReviewQueueCount } from "../../db/review-queue";
 import { hasCredentials } from "../../gmail/config";
 import { generateAlerts, printAlerts } from "../alerts";
+import { findAndFlagDuplicates } from "../../dedup/dedup";
 import type { SyncResult } from "../../gmail/sync";
 import type { OAuth2Client } from "googleapis-common";
 
@@ -30,6 +31,7 @@ export interface SyncDeps {
   getReviewQueueCount: typeof getReviewQueueCount;
   generateAlerts: typeof generateAlerts;
   printAlerts: typeof printAlerts;
+  findAndFlagDuplicates: typeof findAndFlagDuplicates;
 }
 
 const defaultDeps: SyncDeps = {
@@ -45,6 +47,7 @@ const defaultDeps: SyncDeps = {
   getReviewQueueCount,
   generateAlerts,
   printAlerts,
+  findAndFlagDuplicates,
 };
 
 function parseSinceArg(args: string[]): Date | undefined {
@@ -155,6 +158,21 @@ export async function syncCommand(
   // Step 5: Store transactions
   const inserted = deps.insertTransactions(transactions);
   console.log(`Stored ${inserted} new transactions.`);
+
+  // Step 5.5: Dedup newly inserted transactions
+  if (inserted > 0) {
+    const newTxIds = transactions.map((tx) => tx.id);
+    const cli = deps.createClaudeCli();
+    if (cli.isAvailable()) {
+      console.log("Checking for duplicate transactions...");
+      const dedupResult = deps.findAndFlagDuplicates(cli, newTxIds);
+      if (dedupResult.duplicatesConfirmed > 0) {
+        console.log(
+          `Found ${dedupResult.duplicatesConfirmed} duplicate(s) flagged for review.`,
+        );
+      }
+    }
+  }
 
   // Step 6: Summary
   const reviewCount = deps.getReviewQueueCount();
