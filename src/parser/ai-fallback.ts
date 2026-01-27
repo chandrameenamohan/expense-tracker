@@ -156,7 +156,7 @@ export function toTransaction(
     account: (ai.account || "").trim(),
     bank: (ai.bank || "").trim(),
     reference: ai.reference?.trim() || undefined,
-    description: ai.description?.trim() || undefined,
+    description: ai.description?.trim() || email.subject,
     source: "ai",
     confidence,
     needsReview: confidence < 0.7,

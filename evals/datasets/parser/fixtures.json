@@ -266,5 +266,77 @@
       "merchant": "PRIYA SHARMA",
       "bank": "Axis"
     }
+  },
+  {
+    "id": "cc-debit-hdfc-02",
+    "description": "HDFC credit card debit with 'towards MERCHANT' format",
+    "input": {
+      "messageId": "eval-cc-hdfc-02",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Rs.4790.42 debited via Credit Card **2742",
+      "date": "2026-01-02T11:06:00.000Z",
+      "bodyText": "Dear Customer, Greetings from HDFC Bank! Rs.4790.42 is debited from your HDFC Bank Credit Card ending 2742 towards SHELL INDIA MARKETS PR on 02 Jan, 2026 at 11:06:19. To know your available balance, outstanding amount and transactions in detail, please visit MyCards.: https://mycards.hdfcbank.com"
+    },
+    "expected": {
+      "amount": 4790.42,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "SHELL INDIA MARKETS PR",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "cc-debit-hdfc-03",
+    "description": "HDFC credit card 'used for Rs.X at MERCHANT' format",
+    "input": {
+      "messageId": "eval-cc-hdfc-03",
+      "from": "alerts@hdfcbank.net",
+      "subject": "Alert : Update on your HDFC Bank Credit Card",
+      "date": "2026-01-27T23:36:00.000Z",
+      "bodyText": "Dear Customer, Thank you for using HDFC Bank Card XX2742 for Rs. 99.0 at GOOGLEPLAY on 27-01-2026 23:36:07 Authorization code:- 036325 Please note that this transaction was conducted without OTP /PIN. If you have not authorized the above transaction, please call on 18002586161"
+    },
+    "expected": {
+      "amount": 99.0,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "GOOGLEPLAY",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "neft-debit-hdfc-01",
+    "description": "HDFC NEFT debit transfer to payee",
+    "input": {
+      "messageId": "eval-neft-hdfc-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "View: Account update for your HDFC Bank A/c",
+      "date": "2026-01-01T17:33:00.000Z",
+      "bodyText": "Dear Customer, Thank you for banking with HDFC Bank. Rs. 70000 has been deducted from your HDFC Bank account ending in XX8559 for a transfer to payee SerenityOwner via NEFT using HDFC Bank Online Banking. Not you? Call 18002586161/SMS 'BLOCK OB' to 7308080808 from your registered mobile number."
+    },
+    "expected": {
+      "amount": 70000.0,
+      "direction": "debit",
+      "type": "bank_transfer",
+      "merchant": "SerenityOwner",
+      "bank": "HDFC"
+    }
+  },
+  {
+    "id": "cc-emandate-hdfc-01",
+    "description": "HDFC credit card e-mandate auto payment (Google Play)",
+    "input": {
+      "messageId": "eval-cc-emandate-01",
+      "from": "alerts@hdfcbank.net",
+      "subject": "View: Account update for your HDFC Bank A/c",
+      "date": "2026-01-27T23:36:00.000Z",
+      "bodyText": "Dear Customer, Greetings from HDFC Bank! Your Google Play - App Purchase Services bill, set up through E-mandate (Auto payment), has been successfully paid using your HDFC Bank Credit Card ending 2742. Transaction Details: Amount: INR 99.00 Date: 27/01/2026 SI Hub ID: XwjOXZVGvP To manage your e-Mandates, please visit: https://www.sihub.in/managesi/hdfcbank Thank you for banking with us."
+    },
+    "expected": {
+      "amount": 99.0,
+      "direction": "debit",
+      "type": "credit_card",
+      "merchant": "Google Play",
+      "bank": "HDFC"
+    }
   }
 ]

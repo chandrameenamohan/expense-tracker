@@ -209,9 +209,11 @@ export function deleteTransaction(id: string): boolean {
   return result.changes > 0;
 }
 
-/** Delete all transactions. Returns count deleted. */
+/** Delete all transactions (and dependent rows). Returns count deleted. */
 export function deleteAllTransactions(): number {
   const db = getDb();
+  db.prepare("DELETE FROM eval_flags").run();
+  db.prepare("DELETE FROM duplicate_groups").run();
   const result = db.prepare("DELETE FROM transactions").run();
   return result.changes;
 }
