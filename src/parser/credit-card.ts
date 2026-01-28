@@ -1,6 +1,7 @@
 import type { Parser, RawEmail, Transaction } from "../types";
 import { normalizeAmount } from "./amount";
 import { randomUUID } from "crypto";
+import { getConfig } from "../config";
 
 /**
  * Patterns to detect credit card transaction emails from Indian banks.
@@ -121,7 +122,7 @@ export const creditCardParser: Parser = {
       emailMessageId: email.messageId,
       date: parseDate(fullText, email.date),
       amount,
-      currency: "INR",
+      currency: getConfig().currency.code,
       direction: detectDirection(fullText),
       type: "credit_card",
       merchant: extractMerchant(fullText),

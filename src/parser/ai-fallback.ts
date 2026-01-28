@@ -1,6 +1,7 @@
 import type { Parser, RawEmail, Transaction, TransactionType, TransactionDirection } from "../types";
 import { normalizeAmount } from "./amount";
 import { randomUUID } from "crypto";
+import { getConfig } from "../config";
 
 /**
  * Expected JSON shape from the claude CLI response.
@@ -64,7 +65,7 @@ export function buildPrompt(email: RawEmail): string {
     .replace("{{SUBJECT}}", email.subject)
     .replace("{{FROM}}", email.from)
     .replace("{{DATE}}", email.date.toISOString())
-    .replace("{{BODY}}", body.slice(0, 8000));
+    .replace("{{BODY}}", body.slice(0, getConfig().parser.bodyTruncationLimit));
 }
 
 /**
@@ -149,7 +150,7 @@ export function toTransaction(
     emailMessageId: email.messageId,
     date,
     amount,
-    currency: "INR",
+    currency: getConfig().currency.code,
     direction,
     type,
     merchant,
@@ -159,7 +160,7 @@ export function toTransaction(
     description: ai.description?.trim() || email.subject,
     source: "ai",
     confidence,
-    needsReview: confidence < 0.7,
+    needsReview: confidence < getConfig().parser.confidenceThreshold,
     createdAt: now,
     updatedAt: now,
   };

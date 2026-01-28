@@ -4,6 +4,7 @@
  */
 
 import { getDb } from "../../db/connection";
+import { getConfig } from "../../config";
 
 export interface SummaryOptions {
   startDate?: string;
@@ -130,7 +131,7 @@ export function getSummaryData(opts: SummaryOptions = {}): SummaryData {
 }
 
 function formatCurrency(amount: number): string {
-  return `₹${amount.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+  return `₹${amount.toLocaleString(getConfig().currency.locale, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
 }
 
 /** Print summary to console. */

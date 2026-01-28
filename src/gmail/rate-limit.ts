@@ -12,10 +12,12 @@ export interface RetryOptions {
   maxDelayMs?: number;
 }
 
+import { getConfig } from "../config";
+
 const DEFAULT_OPTIONS: Required<RetryOptions> = {
-  maxRetries: 5,
-  initialDelayMs: 1000,
-  maxDelayMs: 32000,
+  maxRetries: getConfig().rateLimit.maxRetries,
+  initialDelayMs: getConfig().rateLimit.initialDelayMs,
+  maxDelayMs: getConfig().rateLimit.maxDelayMs,
 };
 
 /**

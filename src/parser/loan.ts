@@ -1,6 +1,7 @@
 import type { Parser, RawEmail, Transaction } from "../types";
 import { normalizeAmount } from "./amount";
 import { randomUUID } from "crypto";
+import { getConfig } from "../config";
 
 const LOAN_SUBJECT_PATTERNS = [
   /emi/i,
@@ -123,7 +124,7 @@ export const loanParser: Parser = {
       emailMessageId: email.messageId,
       date: parseDate(fullText, email.date),
       amount,
-      currency: "INR",
+      currency: getConfig().currency.code,
       direction: "debit",
       type: "loan",
       merchant: extractLoanType(fullText),

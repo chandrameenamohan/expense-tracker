@@ -9,10 +9,12 @@ import {
   incrementTotalSyncedCount,
 } from "../db/sync-state";
 
-/** Default lookback for first sync: 12 months */
+import { getConfig } from "../config";
+
+/** Default lookback for first sync */
 function defaultSinceDate(): Date {
   const d = new Date();
-  d.setMonth(d.getMonth() - 12);
+  d.setMonth(d.getMonth() - getConfig().sync.defaultLookbackMonths);
   return d;
 }
 

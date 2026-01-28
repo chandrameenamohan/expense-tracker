@@ -5,6 +5,7 @@
  */
 
 import { getDb } from "../db/connection";
+import { getConfig } from "../config";
 
 export interface MonthComparison {
   month: string;
@@ -226,7 +227,7 @@ export function generateSuggestions(
 }
 
 function fmt(n: number): string {
-  return Math.round(n).toLocaleString("en-IN");
+  return Math.round(n).toLocaleString(getConfig().currency.locale);
 }
 
 /** Compute all deeper insights. */

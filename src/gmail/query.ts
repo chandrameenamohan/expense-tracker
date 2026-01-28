@@ -1,41 +1,16 @@
 import type { OAuth2Client } from "googleapis-common";
 import { google } from "googleapis";
 import { withRetry } from "./rate-limit";
-
-/** Known Indian bank sender addresses for transaction alerts */
-const SENDERS = [
-  "alerts@hdfcbank.net",
-  "alerts@icicibank.com",
-  "alerts@axisbank.com",
-  "alerts@sbicard.com",
-  "alerts@sbi.co.in",
-  "noreply@hdfcbank.net",
-  "creditcards@hdfcbank.net",
-  "donotreply@indusind.com",
-  "alerts@kotak.com",
-  "transact@unionbankofindia.co.in",
-  "chandrameenamohan@gmail.com",
-];
-
-/** Transaction-related subject keywords */
-const SUBJECT_KEYWORDS = [
-  "transaction",
-  "debit",
-  "credit",
-  "payment",
-  "UPI",
-  "EMI",
-  "SIP",
-  "account update",
-];
+import { getConfig } from "../config";
 
 /**
  * Builds the Gmail search query string combining sender and subject filters.
  * Optionally filters by date range using `after:`.
  */
 export function buildQuery(afterDate?: Date): string {
-  const fromClause = `{${SENDERS.map((s) => `from:${s}`).join(" ")}}`;
-  const subjectClause = `{${SUBJECT_KEYWORDS.map((k) => `subject:${k}`).join(" ")}}`;
+  const { senders, subjectKeywords } = getConfig().gmail;
+  const fromClause = `{${senders.map((s) => `from:${s}`).join(" ")}}`;
+  const subjectClause = `{${subjectKeywords.map((k) => `subject:${k}`).join(" ")}}`;
 
   let query = `${fromClause} ${subjectClause}`;
 

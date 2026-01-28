@@ -2,6 +2,7 @@ import type { OAuth2Client } from "googleapis-common";
 import { google } from "googleapis";
 import type { RawEmail } from "../types";
 import { withRetry } from "./rate-limit";
+import { getConfig } from "../config";
 
 /**
  * Extracts a header value from a Gmail message payload.
@@ -85,7 +86,7 @@ function toRawEmail(message: any): RawEmail | null {
 }
 
 /** Default batch size for fetching messages */
-const BATCH_SIZE = 50;
+const BATCH_SIZE = getConfig().gmail.fetchBatchSize;
 
 /**
  * Fetches full message content for a list of message IDs.

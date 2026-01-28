@@ -5,6 +5,7 @@
  */
 
 import { getDb } from "../db/connection";
+import { getConfig } from "../config";
 
 export interface Alert {
   message: string;
@@ -17,11 +18,7 @@ interface CategorySpending {
   count: number;
 }
 
-/** Threshold: alert when current week spending exceeds average by this factor. */
-const SPIKE_THRESHOLD = 1.4; // 40% more
-
-/** Threshold: alert for single transactions above this amount. */
-const LARGE_TRANSACTION_AMOUNT = 10000;
+const { spikeThreshold: SPIKE_THRESHOLD, largeTransactionAmount: LARGE_TRANSACTION_AMOUNT } = getConfig().alerts;
 
 /** Get spending by category for a date range (debits only). */
 export function getCategorySpending(
@@ -123,7 +120,7 @@ export function generateAlerts(now: Date = new Date()): Alert[] {
 }
 
 function formatNum(n: number): string {
-  return n.toLocaleString("en-IN", {
+  return n.toLocaleString(getConfig().currency.locale, {
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   });

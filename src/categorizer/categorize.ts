@@ -10,36 +10,15 @@ import {
   getRecentCorrections,
   getCorrectionsByMerchant,
 } from "../db/category-corrections";
+import { getConfig } from "../config";
 
-/** All valid categories */
-export const CATEGORIES = [
-  "Food",
-  "Transport",
-  "Shopping",
-  "Bills",
-  "Entertainment",
-  "Health",
-  "Education",
-  "Investment",
-  "Transfer",
-  "Other",
-] as const;
+/** All valid categories (derived from config) */
+export const CATEGORIES = getConfig().categories.list;
 
 /** Human-readable descriptions so the LLM knows what each category covers. */
-const CATEGORY_DESCRIPTIONS: Record<CategoryName, string> = {
-  Food: "Restaurants, cafes, bakeries, coffee shops, grocery stores, food delivery, dining out",
-  Transport: "Fuel, gas stations, cab/taxi, auto, ride-sharing, metro, bus, parking, tolls, vehicle servicing",
-  Shopping: "Online/offline retail, clothing, electronics, home goods, Amazon, Flipkart",
-  Bills: "Utilities, electricity, water, internet, phone, rent, insurance, subscriptions, app purchases, recharges",
-  Entertainment: "Movies, streaming, gaming, events, concerts, sports",
-  Health: "Pharmacy, hospital, doctor, lab tests, medical supplies, gym, fitness",
-  Education: "Courses, books, tuition, school/college fees, training",
-  Investment: "Mutual funds, SIP, stocks, fixed deposits, PPF, NPS",
-  Transfer: "Person-to-person transfers, NEFT/RTGS/IMPS to individuals, rent payments to landlords, family transfers",
-  Other: "Only use when the transaction truly does not fit any category above",
-};
+const CATEGORY_DESCRIPTIONS = getConfig().categories.descriptions;
 
-export type CategoryName = (typeof CATEGORIES)[number];
+export type CategoryName = string;
 
 /** Response expected from Claude */
 interface CategorizeResponse {
@@ -173,7 +152,7 @@ export function buildBatchCategoryPrompt(
  * Validate that a category string is one of the known categories.
  */
 export function isValidCategory(category: string): category is CategoryName {
-  return CATEGORIES.includes(category as CategoryName);
+  return CATEGORIES.includes(category);
 }
 
 /**

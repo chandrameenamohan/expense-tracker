@@ -1,6 +1,7 @@
 import type { Parser, RawEmail, Transaction } from "../types";
 import { normalizeAmount } from "./amount";
 import { randomUUID } from "crypto";
+import { getConfig } from "../config";
 
 const SIP_SUBJECT_PATTERNS = [
   /sip/i,
@@ -116,7 +117,7 @@ export const sipParser: Parser = {
       emailMessageId: email.messageId,
       date: parseDate(fullText, email.date),
       amount,
-      currency: "INR",
+      currency: getConfig().currency.code,
       direction: "debit",
       type: "sip",
       merchant: extractFundName(fullText),

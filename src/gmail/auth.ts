@@ -3,8 +3,10 @@ import { dirname } from "node:path";
 import { google } from "googleapis";
 import { getCredentialsPath, getTokenPath } from "./config";
 
+import { getConfig } from "../config";
+
 const SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"];
-const REDIRECT_PORT = 3847;
+const REDIRECT_PORT = getConfig().gmail.redirectPort;
 const REDIRECT_URI = `http://localhost:${REDIRECT_PORT}`;
 
 export interface StoredToken {
@@ -176,7 +178,7 @@ async function waitForAuthCode(): Promise<string> {
 
     setTimeout(() => {
       server.stop();
-      reject(new Error("Authentication timed out after 120 seconds"));
-    }, 120_000);
+      reject(new Error("Authentication timed out"));
+    }, getConfig().gmail.authTimeoutMs);
   });
 }

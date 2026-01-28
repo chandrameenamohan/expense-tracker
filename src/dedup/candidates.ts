@@ -5,6 +5,7 @@
  */
 
 import { getDb } from "../db/connection";
+import { getConfig } from "../config";
 
 export interface DuplicateCandidate {
   txId1: string;
@@ -42,7 +43,7 @@ export function findCandidates(txIds?: string[]): DuplicateCandidate[] {
         AND t1.direction = t2.direction
         AND t1.id < t2.id
         AND t1.email_message_id != t2.email_message_id
-        AND abs(julianday(t1.date) - julianday(t2.date)) <= 1.0
+        AND abs(julianday(t1.date) - julianday(t2.date)) <= ${getConfig().dedup.dateToleranceDays}
       WHERE t1.id IN (${placeholders}) OR t2.id IN (${placeholders})
     `;
     params.push(...txIds, ...txIds);
@@ -59,7 +60,7 @@ export function findCandidates(txIds?: string[]): DuplicateCandidate[] {
         AND t1.direction = t2.direction
         AND t1.id < t2.id
         AND t1.email_message_id != t2.email_message_id
-        AND abs(julianday(t1.date) - julianday(t2.date)) <= 1.0
+        AND abs(julianday(t1.date) - julianday(t2.date)) <= ${getConfig().dedup.dateToleranceDays}
     `;
   }
 

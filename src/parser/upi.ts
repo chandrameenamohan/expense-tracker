@@ -1,6 +1,7 @@
 import type { Parser, RawEmail, Transaction } from "../types";
 import { normalizeAmount } from "./amount";
 import { randomUUID } from "crypto";
+import { getConfig } from "../config";
 
 /**
  * Patterns to detect UPI transaction emails.
@@ -149,7 +150,7 @@ export const upiParser: Parser = {
       emailMessageId: email.messageId,
       date: parseDate(fullText, email.date),
       amount,
-      currency: "INR",
+      currency: getConfig().currency.code,
       direction: detectDirection(fullText),
       type: "upi",
       merchant: extractMerchant(fullText),
