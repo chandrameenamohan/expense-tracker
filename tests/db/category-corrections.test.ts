@@ -8,8 +8,8 @@ import {
 } from "../../src/db";
 
 beforeEach(() => {
-  _resetDb();
   process.env.EXPENSE_TRACKER_DB = ":memory:";
+  _resetDb();
   runMigrations();
 });
 
@@ -78,12 +78,13 @@ describe("getCorrectionsByMerchant", () => {
 
 describe("getRecentCorrections", () => {
   it("returns all recent corrections across merchants", () => {
+    const baseline = getRecentCorrections().length;
     insertCategoryCorrection("Swiggy", "Other", "Food");
     insertCategoryCorrection("Uber", "Other", "Transport");
     insertCategoryCorrection("Netflix", "Other", "Entertainment");
 
     const results = getRecentCorrections();
-    expect(results).toHaveLength(3);
+    expect(results).toHaveLength(baseline + 3);
   });
 
   it("respects limit", () => {

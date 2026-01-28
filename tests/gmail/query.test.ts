@@ -4,7 +4,7 @@ import { buildQuery } from "../../src/gmail/query";
 describe("buildQuery", () => {
   test("includes sender filter with all known banks", () => {
     const query = buildQuery();
-    expect(query).toContain("from:(");
+    expect(query).toContain("{from:");
     expect(query).toContain("alerts@hdfcbank.net");
     expect(query).toContain("alerts@icicibank.com");
     expect(query).toContain("alerts@axisbank.com");
@@ -13,7 +13,7 @@ describe("buildQuery", () => {
 
   test("includes subject keywords", () => {
     const query = buildQuery();
-    expect(query).toContain("subject:(");
+    expect(query).toContain("{subject:");
     expect(query).toContain("transaction");
     expect(query).toContain("debit");
     expect(query).toContain("credit");

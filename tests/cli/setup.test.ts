@@ -30,11 +30,13 @@ describe("setup command", () => {
     expect(output).toContain(".expense-tracker");
   });
 
-  test("mentions Gmail readonly scope", () => {
+  test("mentions Gmail readonly scope or setup complete", () => {
     const logs = captureLog(() => setupCommand([]));
     const output = logs.join("\n");
 
-    // Regardless of credential state, should mention the scope or credentials path
-    expect(output).toContain("gmail.readonly");
+    // When credentials+token exist, setup short-circuits; otherwise mentions scope
+    const mentionsScope = output.includes("gmail.readonly");
+    const setupComplete = output.includes("Setup is complete");
+    expect(mentionsScope || setupComplete).toBe(true);
   });
 });

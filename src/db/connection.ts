@@ -31,6 +31,9 @@ export function closeDb(): void {
 
 /** Reset singleton — for testing only */
 export function _resetDb(): void {
+  if (instance) {
+    try { instance.close(); } catch {}
+  }
   instance = null;
 }
 
