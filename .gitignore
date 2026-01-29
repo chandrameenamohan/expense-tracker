@@ -7,3 +7,5 @@ dist/
 credentials.json
 token.json
 bun.lockb
+sync.log
+sync-error.log
