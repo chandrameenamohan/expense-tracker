@@ -38,7 +38,7 @@ Commands:
   summary        Expense summary and category breakdown
   review         Review low-confidence AI-parsed transactions
   recategorize   Override a transaction's category
-  reparse        Re-parse all raw emails
+  reparse        Re-parse raw emails (--missing for unparsed only)
   chat           Conversational query mode
   remerchant     Override a transaction's merchant name
   flag           Flag a transaction as correct/wrong for evals
