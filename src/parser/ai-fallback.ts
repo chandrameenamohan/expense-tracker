@@ -60,7 +60,10 @@ Email body:
 {{BODY}}`;
 
 export function buildPrompt(email: RawEmail): string {
-  const body = email.bodyText || "";
+  let body = email.bodyText || "";
+  if (!body && email.bodyHtml) {
+    body = email.bodyHtml.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim();
+  }
   return PROMPT_TEMPLATE
     .replace("{{SUBJECT}}", email.subject)
     .replace("{{FROM}}", email.from)
